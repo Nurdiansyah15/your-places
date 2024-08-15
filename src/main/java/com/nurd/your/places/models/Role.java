@@ -6,8 +6,8 @@ public enum Role {
 
     public static boolean isValidRole(String value) {
         if (value == null) return false;
-        for (Role status : Role.values()) {
-            if (value.equals(status.name())) {
+        for (Role role : Role.values()) {
+            if (value.equals(role.name())) {
                 return true;
             }
         }

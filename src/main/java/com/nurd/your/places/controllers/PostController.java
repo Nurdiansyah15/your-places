@@ -31,7 +31,7 @@ public class PostController {
             @RequestParam(required = false) String search,
             @RequestParam(required = false) Integer limit
     ) {
-        return new ResponseEntity<>(postService.findAllUserPosts(search, limit), HttpStatus.OK);
+        return ResponseBuilder.renderJSON(postService.findAllUserPosts(search, limit), "Success", HttpStatus.OK);
     }
 
     @GetMapping("/posts/{id}")

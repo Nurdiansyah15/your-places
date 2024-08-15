@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -22,8 +24,8 @@ public class UserController {
     // admin
 
     @PutMapping("/users/role/{id}")
-    public ResponseEntity<?> updateUserRole(@PathVariable String id, @RequestBody String role) {
-        return ResponseBuilder.renderJSON(userService.updateUserRole(id, role), "Success", HttpStatus.CREATED);
+    public ResponseEntity<?> updateUserRole(@PathVariable String id, @RequestBody Map<String, String> role) {
+        return ResponseBuilder.renderJSON(userService.updateUserRole(id, role.get("role")), "Success", HttpStatus.CREATED);
     }
 
     @GetMapping("/users")

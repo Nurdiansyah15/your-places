@@ -66,7 +66,6 @@ public class AuthService {
     // userAuth
     public User getUserAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication.getName());
         return userRepo.findByUsername(authentication.getName()).orElseThrow(() -> new RuntimeException("User not found"));
     }
 }

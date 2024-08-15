@@ -51,8 +51,8 @@ public class UserService {
     @Transactional
     public User updateUserRole(String id, String role) {
         User newUser = userRepo.findById(id).orElseThrow(() -> new CustomNotFoundException("User not found"));
-        if (Role.isValidRole(role)) {
-            newUser.setRole(Role.valueOf(role).name());
+        if (Role.isValidRole("ROLE_" + role.toUpperCase())) {
+            newUser.setRole(Role.valueOf("ROLE_" + role.toUpperCase()).name());
         } else {
             throw new IllegalArgumentException("Role is not valid");
         }
@@ -63,9 +63,9 @@ public class UserService {
     public User changePassword(UserDto.ChangePassword dto) {
         User user = authService.getUserAuthenticated();
         if (!passwordEncoder.matches(dto.getOldPassword(), user.getPassword())) {
-            throw new IllegalStateException("invalid credentials");
+            throw new IllegalArgumentException("password is not correct");
         }
-        user.setPassword(dto.getNewPassword());
+        user.setPassword(passwordEncoder.encode(dto.getNewPassword()));
         return userRepo.update(user.getId(), user);
     }
 

@@ -51,7 +51,7 @@ public class SecurityChain {
         http
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/api/auth/**").permitAll()
-                                .requestMatchers("/api/users/**").hasAuthority("ADMIN")
+                                .requestMatchers("/api/users/**").hasRole("ADMIN")
                                 .requestMatchers("/api/places/**", "/api/place/**").permitAll()
                                 .requestMatchers("/api/user/**").authenticated()
                                 .requestMatchers("/api/posts/**").authenticated()

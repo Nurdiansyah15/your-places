@@ -1,6 +1,5 @@
 package com.nurd.your.places.repositories;
 
-import com.nurd.your.places.models.Post;
 import com.nurd.your.places.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
